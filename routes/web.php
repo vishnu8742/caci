@@ -19,9 +19,10 @@ Route::get('/', function () {
 
 Route::redirect('/dashboard', '/sales');
 
-Route::get('/sales', function () {
-    return view('coffee_sales');
-})->middleware(['auth'])->name('coffee.sales');
+Route::get('/sales', 'SalesController@sales')->middleware(['auth'])->name('coffee.sales');
+
+Route::post('/sales', 'SalesController@add_sale')->middleware(['auth'])->name('coffee.add_sale');
+
 
 Route::get('/shipping-partners', function () {
     return view('shipping_partners');
